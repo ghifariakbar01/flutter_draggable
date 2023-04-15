@@ -7,6 +7,7 @@ part 'save_and_share_model.freezed.dart';
 class SaveAndShare with _$SaveAndShare {
   const factory SaveAndShare({
     required bool isSaving,
+    required String imagePath,
     required Uint8List image,
   }) = _SaveAndShare;
 }

@@ -8,6 +8,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pentarex/model/save_and_share_model.dart';
 
@@ -17,9 +18,11 @@ final saveAndShareNotifierProvider =
 
 class SaveAndShareNotifierProvider extends StateNotifier<SaveAndShare> {
   SaveAndShareNotifierProvider()
-      : super(SaveAndShare(isSaving: false, image: Uint8List(0)));
+      : super(
+            SaveAndShare(isSaving: false, image: Uint8List(0), imagePath: ''));
 
   bool get isSaving => state.isSaving;
+  String get imagePath => state.imagePath;
 
   void savingMode(bool toSave) {
     state = state.copyWith(isSaving: toSave);
@@ -35,6 +38,11 @@ class SaveAndShareNotifierProvider extends StateNotifier<SaveAndShare> {
 
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/image.png');
+
+    state = state.copyWith(image: pngBytes, imagePath: file.path);
+
     await file.writeAsBytes(pngBytes);
+    await Fluttertoast.showToast(
+        msg: 'Image saved to ${directory.path}/image.png');
   }
 }

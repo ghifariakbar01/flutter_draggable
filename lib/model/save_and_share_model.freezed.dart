@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SaveAndShare {
   bool get isSaving => throw _privateConstructorUsedError;
+  String get imagePath => throw _privateConstructorUsedError;
   Uint8List get image => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $SaveAndShareCopyWith<$Res> {
           SaveAndShare value, $Res Function(SaveAndShare) then) =
       _$SaveAndShareCopyWithImpl<$Res, SaveAndShare>;
   @useResult
-  $Res call({bool isSaving, Uint8List image});
+  $Res call({bool isSaving, String imagePath, Uint8List image});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$SaveAndShareCopyWithImpl<$Res, $Val extends SaveAndShare>
   @override
   $Res call({
     Object? isSaving = null,
+    Object? imagePath = null,
     Object? image = null,
   }) {
     return _then(_value.copyWith(
@@ -54,6 +56,10 @@ class _$SaveAndShareCopyWithImpl<$Res, $Val extends SaveAndShare>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -70,7 +76,7 @@ abstract class _$$_SaveAndShareCopyWith<$Res>
       __$$_SaveAndShareCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isSaving, Uint8List image});
+  $Res call({bool isSaving, String imagePath, Uint8List image});
 }
 
 /// @nodoc
@@ -85,6 +91,7 @@ class __$$_SaveAndShareCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSaving = null,
+    Object? imagePath = null,
     Object? image = null,
   }) {
     return _then(_$_SaveAndShare(
@@ -92,6 +99,10 @@ class __$$_SaveAndShareCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      imagePath: null == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -103,16 +114,19 @@ class __$$_SaveAndShareCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SaveAndShare with DiagnosticableTreeMixin implements _SaveAndShare {
-  const _$_SaveAndShare({required this.isSaving, required this.image});
+  const _$_SaveAndShare(
+      {required this.isSaving, required this.imagePath, required this.image});
 
   @override
   final bool isSaving;
+  @override
+  final String imagePath;
   @override
   final Uint8List image;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SaveAndShare(isSaving: $isSaving, image: $image)';
+    return 'SaveAndShare(isSaving: $isSaving, imagePath: $imagePath, image: $image)';
   }
 
   @override
@@ -121,6 +135,7 @@ class _$_SaveAndShare with DiagnosticableTreeMixin implements _SaveAndShare {
     properties
       ..add(DiagnosticsProperty('type', 'SaveAndShare'))
       ..add(DiagnosticsProperty('isSaving', isSaving))
+      ..add(DiagnosticsProperty('imagePath', imagePath))
       ..add(DiagnosticsProperty('image', image));
   }
 
@@ -131,12 +146,14 @@ class _$_SaveAndShare with DiagnosticableTreeMixin implements _SaveAndShare {
             other is _$_SaveAndShare &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
             const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isSaving, const DeepCollectionEquality().hash(image));
+  int get hashCode => Object.hash(runtimeType, isSaving, imagePath,
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -148,10 +165,13 @@ class _$_SaveAndShare with DiagnosticableTreeMixin implements _SaveAndShare {
 abstract class _SaveAndShare implements SaveAndShare {
   const factory _SaveAndShare(
       {required final bool isSaving,
+      required final String imagePath,
       required final Uint8List image}) = _$_SaveAndShare;
 
   @override
   bool get isSaving;
+  @override
+  String get imagePath;
   @override
   Uint8List get image;
   @override

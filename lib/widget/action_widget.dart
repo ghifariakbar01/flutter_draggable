@@ -6,6 +6,7 @@ import 'package:pentarex/provider/image_provider.dart';
 import 'package:pentarex/provider/save_and_share_provider.dart';
 import 'package:pentarex/provider/text_provider.dart';
 import 'package:pentarex/view/detail_view.dart';
+import 'package:social_share/social_share.dart';
 
 class ActionWidget extends ConsumerWidget {
   const ActionWidget({Key? key});
@@ -39,6 +40,13 @@ class ActionWidget extends ConsumerWidget {
               IconButton(
                   onPressed: () {
                     // show dialog
+                    //with hashtags and link
+                    SocialShare.shareOptions(
+                      "Check out this meme",
+                      imagePath: ref
+                          .read(saveAndShareNotifierProvider.notifier)
+                          .imagePath,
+                    );
                   },
                   icon: Icon(Icons.share))
             ],
